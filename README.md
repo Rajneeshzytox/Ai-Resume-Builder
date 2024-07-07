@@ -1,5 +1,9 @@
 # React Resume Builder
 
+
+## Live Demo
+[Live Preview](https://ai-resume-builder-rajneeshzytox.netlify.app/)
+
 ---
 ## Contact
 - **Email**: kumarrajneesh.work@gmail.com

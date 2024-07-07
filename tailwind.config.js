@@ -14,6 +14,7 @@ export default {
   // daisyUI config (optional - here are the default values)
   daisyui: {
     themes: [ 
+      "light",
       "dark",
       {
       rajneesh: {
