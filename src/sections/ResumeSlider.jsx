@@ -7,7 +7,7 @@ const resume = [
   "https://i.ibb.co/8mggmtL/images.jpg",
 ];
 
-const ResumeSample = () => {
+const ResumeSlider = () => {
   return (
     <section
       id="resumeSection"
@@ -50,4 +50,4 @@ const ResumeSample = () => {
   );
 };
 
-export default ResumeSample;
+export default ResumeSlider;

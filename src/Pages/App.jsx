@@ -3,7 +3,7 @@
 //section import
 import Navbar from "../sections/Navbar";
 import Hero from "../sections/Hero";
-import ResumeSample from "../sections/ResumeSample";
+import ResumeSlider from "../sections/ResumeSlider";
 import Footer from "../sections/Footer";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <>
      <Navbar/>
     <Hero />
-    <ResumeSample />
+    <ResumeSlider />
     <Footer/>
     </>
   )

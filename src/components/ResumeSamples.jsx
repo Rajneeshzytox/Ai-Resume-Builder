@@ -2,10 +2,10 @@ export default function ResumeSamples({ data }) {
     console.log(data)
   return (
     <div
-      className="bg-neutral min-h-screen h-screen p-4 flex justify-center text-sm"
+      className="bg-neutral min-w-[50%] min-h-screen p-4 flex justify-center text-sm"
       
     >
-      <div className="bg-white shadow-lg rounded-sm w-full max-w-3xl aspect-[1/1.414] p-4">
+      <div className="bg-white shadow-lg rounded-sm w-full  p-4">
         {/* top section of resume */}
         <header className="border-b pb-6 mb-4 text-xs">
           <div className="flex items-center justify-between">
@@ -47,6 +47,24 @@ export default function ResumeSamples({ data }) {
         </section>
 
         <section className="mb-4">
+          <h2 className="text-lg font-bold text-gray-800 mb-2">Projects</h2>
+          <ul>
+            {
+              // EXPERIENCE
+                data.project.map((exp, index) => (
+                <li key={index} className="mb-2">
+                    <h3 className="text-md font-semibold text-gray-800">
+                    {exp.title}
+                    </h3>
+                    <p className="text-gray-600">{exp.sub}</p>
+                    <p className="text-gray-600">{exp.disc}</p>
+                </li>
+                ))
+            }
+          </ul>
+        </section>
+
+        <section className="mb-4">
           <h2 className="text-lg font-bold text-gray-800 mb-2">Education</h2>
           <ul>
             {
@@ -68,7 +86,7 @@ export default function ResumeSamples({ data }) {
           <ul className="flex flex-wrap">
             
             {
-                data.skills.map((skill, key) => 
+                data.skill.map((skill, key) => 
                     <li key={key} className="bg-gray-200 rounded-full px-2 py-1 m-1 text-gray-700">
                         {skill}
                     </li>

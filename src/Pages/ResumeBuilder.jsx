@@ -3,48 +3,53 @@ import ResumeInput from '../components/ResumeInputs.jsx';
 import { useState } from 'react';
 
 export default function ResumeBuilder() {
+    const [IsAlert, setIsAlert] = useState(true);
     const [resumeData, setResumeData] = useState({
       personalData: {
-        username: 'name',
-        role: 'role',
-        email: 'email',
-        phone: 'phone',
-        website: 'website',
+        username: 'Rajneeshzytox',
+        role: 'Frontend web developer',
+        email: 'kumarrajneesh.work@gmail.com',
+        phone: '828282828282',
+        website: 'rajneeshzytox.github.io/portfolio',
       },
-      summary: 'summary',
+      summary: 'Frontend Web Developer',
       experience:[
         {
-          title: 'title',
-          date: 'date', 
-          disc: 'disc', 
+          title: 'Uable - Coding & Design Club Moderator',
+          date: 'July 2021 - March 2022', 
+          disc: 'Too tired to write now, checkout my linkedin /in/rajneeshzytox', 
         },
-        {
-          title: 'title',
-          date: 'date', 
-          disc: 'disc', 
-        },
-        {
-          title: 'title',
-          date: 'date', 
-          disc: 'disc', 
-        },
+        
       ],
       project: [
         {
-          title: 'title',
-          sub: 'sub',
-          disc: 'disc',
-          skills: [],
+          title: 'Ai Rewriter',
+          sub: 'Beginner Project',
+          disc: 'I need to use my project, to write discription about itself',
+         
         },
+        {
+          title: 'Full Stack Blog Magazine with Ai Article generator',
+          sub: 'Html css js php mysql',
+          disc: 'not completed yet, use mohit mohit@1234 or test test@1234 if any password needed',
+         
+        },
+        {
+          title: 'Many small webpages',
+          sub: 'Html css js',
+          disc: 'i will upload on github. checkout rajneeshzytox',
+         
+        },
+       
       ],
       education: [
         {
-          title: 'title',
-          date: 'date',
-          disc: 'disc',
+          title: 'Bca 2nd year',
+          date: 'July 9 2024',
+          disc: 'no disc',
         },
       ],
-      skills: ['skill 1', 'skill 2',],
+      skill: ['Frontend',],
     })
 
     // functoi n to chanage personalData
@@ -74,6 +79,23 @@ export default function ResumeBuilder() {
       setResumeData({ ...resumeData, education: newEducation });
     };
 
+    // change education function
+    const changeProject =  (index, field, value) => {
+      const newProject = [...resumeData.project];
+      newProject[index][field] = value;
+      setResumeData({ ...resumeData, project: newProject });
+    };
+
+    // change education function
+    const changeSkill =  (index, value) => {
+      const newskill = [...resumeData.skill]
+      newskill[index] = value;
+      console.log({...resumeData, newskill})
+      setResumeData({...resumeData, skill: newskill})
+
+    }
+
+
   return (<>
       <section className="hero bg-base-300 min-h-screen relative">
       <div className="hero-content text-center">
@@ -92,10 +114,21 @@ export default function ResumeBuilder() {
           <a href="#resume-builder" className="tooltip tooltip-bottom tooltip-primary scroll-smooth" data-tip="Scroll Down"><i className="fa-solid fa-chevron-down animate-bounce"></i></a>
         </div>
       </div>
+      
     </section>
-    <p className='px-2 py-1 bg-warning text-warning-content'>
-        WE forgot to ask our developer to add a good layout, so we are sorry for that...
-        </p> 
+{(IsAlert) ? 
+    <div id='tempAlert-layoutMsg' className='flex justify-between items-center px-2 py-1 text-warning-content bg-warning '>
+    <p className=''>
+        WE forgot to ask our developer to add a good layout, so we are sorry for that... {IsAlert}
+        </p>
+        <a onClick={() => setIsAlert(!IsAlert)}>
+        <i className="fa-solid fa-multiply cursor-pointer " ></i>
+        </a>
+      </div>
+    : null
+    
+}
+    
     <section id="resume-builder" className="min-h-screen flex flex-col-reverse md:flex-row">
         <ResumeSamples data={resumeData} />
         <ResumeInput 
@@ -104,6 +137,8 @@ export default function ResumeBuilder() {
           OnChange_summary={chanageSummary}
           OnChange_experience={changeExperience}
           OnChange_education={changeEducation}
+          OnChange_project={changeProject}
+          OnChange_skill={changeSkill}
         />
     </section>
       
