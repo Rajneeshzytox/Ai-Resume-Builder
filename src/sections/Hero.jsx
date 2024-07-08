@@ -11,7 +11,7 @@ const Hero = () => {
           <p className="py-6">
           Build your resume easily with our AI-powered tool. Create professional resumes in minutes and get ahead in your job search.
           </p>
-          <a href="#" className="btn btn-primary">Try Sample</a>
+          <a href="resume-builder" className="btn btn-primary">Try Sample</a>
         </div>
       </div>
     </section>
