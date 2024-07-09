@@ -1,6 +1,7 @@
-const inputHeading = `text-xl font-semibold`;
-
-
+const inputHeading = `text-xl font-semibold collapse-title`;
+const collapse = `collapse collapse-arrow bg-base-200 mb-4`;
+const collapseBody = `collapse-content lg:grid lg:grid-cols-2 gap-4 px-4`;
+const inputStyle = `input my-2 w-fill w-full max-w-xs mx-2 py-4  input-bordered`
 
 export default function ResumeInput({
   data,
@@ -12,86 +13,100 @@ export default function ResumeInput({
   OnChange_skill,
 }) {
   return (
-    <section className="px-4 w-full min-h-screen form flex flex-wrap *:flex *:flex-wrap *:gap-1">
-      <div className="">
-        <h3>Personal Data</h3>
-        <input
-          type="text"
-          name="username"
-          value={data.personalData.username}
-          onChange={OnChange_personal}
-          placeholder="Name"
-          className="input ml-4 mb-4  bg-base-300"
-        />
-        <br />
+    <section className="px-4 w-full h-fit bg-base-100 lg:sticky lg:right-0 lg:top-0">
+      <div className={`${collapse}`}>
+        <input type="radio" name="resume-input-group" />
+        <div className={inputHeading}>Personal Data</div>
+        <div className={`${collapseBody}`}>
+
+          <input
+            type="text"
+            name="username"
+            value={data.personalData.username}
+            onChange={OnChange_personal}
+            placeholder="Name"
+            className={`${inputStyle}`}
+          />
         <input
           type="text"
           name="role"
           value={data.personalData.role}
           onChange={OnChange_personal}
           placeholder="role"
-          className="mb-4 input ml-4 bg-base-300"
+          className={`${inputStyle}`}
         />
-        <br />
+       
         <input
           type="email"
           name="email"
           value={data.personalData.email}
           onChange={OnChange_personal}
           placeholder="email"
-          className="mb-4 input ml-4 bg-base-300"
+          className={`${inputStyle}`}
         />
-        <br />
+       
         <input
           type="phone"
           name="phone"
           value={data.personalData.phone}
           onChange={OnChange_personal}
           placeholder="phone"
-          className="mb-4 input ml-4 bg-base-300"
+          className={`${inputStyle}`}
         />
-        <br />
+        
         <input
           type="text"
           name="website"
           value={data.personalData.website}
           onChange={OnChange_personal}
           placeholder="website"
-          className="mb-4 input ml-4 bg-base-300"
+          className={`${inputStyle}`}
         />
-        <br />
+        </div>
+      </div>
+
+      {/* Summary */}
+      <div className={`${collapse}`}>
+      <input type="radio" name="resume-input-group" />
+        <div className={inputHeading}>Summary</div>
+        <div className={`${collapseBody}`}>
+        <textarea className={`${inputStyle} min-h-24`} value={data.summary} onChange={OnChange_summary} rows="4"/>
+        </div>
       </div>
 
       {/* EXPERIENCE */}
-      <div >
-        <h3 className={inputHeading}>Experience</h3>
-      <div className="flex flex-wrap gap-4">
+      <div className={`${collapse}`}>
+      <input type="radio" name="resume-input-group" />
+        <div className={inputHeading}>Experience</div>
+      <div className={`${collapseBody}`}>
         {/* map func for experience array*/}
         {
-            data.experience.map((exp, index) => (
-                <div key={index} className=" flex flex-col gap-2">
-                    <h4 className="text-md">Experince {index}</h4>
-                    <input type="text" className="input bg-base-300 ml-4" value={exp.title} name="title" onChange={(e) => OnChange_experience(index, 'title', e.target.value)} />
-                    <input type="text" className="input bg-base-300 ml-4" value={exp.date} name="date" onChange={(e) => OnChange_experience(index, 'date', e.target.value)} />
-                    <textarea className="input bg-base-300 ml-4" value={exp.disc} name="disc" onChange={(e) => OnChange_experience(index, 'disc', e.target.value)} />
+          data.experience.map((exp, index) => (
+            <div key={index} className="my-2">
+                    <h4 className="text-md">Experince {index+1}</h4>
+                    <input type="text" className={`${inputStyle}`} value={exp.title} name="title" onChange={(e) => OnChange_experience(index, 'title', e.target.value)} />
+                    <input type="text" className={`${inputStyle}`} value={exp.date} name="date" onChange={(e) => OnChange_experience(index, 'date', e.target.value)} />
+                    <textarea className={`${inputStyle} min-h-24`} value={exp.disc} name="disc" onChange={(e) => OnChange_experience(index, 'disc', e.target.value)} />
                 </div>
             ))
-        }
+          }
       </div>
       </div>
 
 
       {/* EDUCATION */}
-      <div >
-        <h3>EDUCATION</h3>
-      <div className="flex flex-wrap gap-2">
+      <div className={`${collapse}`}>
+        <input type="radio" name="resume-input-group" />
+        <div className={inputHeading}>EDUCATION</div>
+      <div className={`${collapseBody}`}>
         {/* map func for experience array*/}
         {
             data.education.map((edu, index) => (
-                <div key={index} className=" flex flex-col gap-2">
-                    <input type="text" className="input bg-base-300 ml-4" value={edu.title} name="title" onChange={(e) => OnChange_education(index, 'title', e.target.value)} />
-                    <input type="text" className="input bg-base-300 ml-4" value={edu.date} name="date" onChange={(e) => OnChange_education(index, 'date', e.target.value)} />
-                    <textarea className="input bg-base-300 ml-4" value={edu.disc} name="disc" onChange={(e) => OnChange_education(index, 'disc', e.target.value)} />
+                <div key={index} className="my-2">
+                    <h4 className="text-md">Education {index+1}</h4>
+                    <input type="text" className={`${inputStyle}`} value={edu.title} name="title" onChange={(e) => OnChange_education(index, 'title', e.target.value)} />
+                    <input type="text" className={`${inputStyle}`} value={edu.date} name="date" onChange={(e) => OnChange_education(index, 'date', e.target.value)} />
+                    <textarea className={`${inputStyle} min-h-24`} value={edu.disc} name="disc" onChange={(e) => OnChange_education(index, 'disc', e.target.value)} />
                 </div>
             ))
         }
@@ -99,32 +114,31 @@ export default function ResumeInput({
       </div>
       
     {/* Project */}
-    <div>
-      <h3 className={inputHeading}>Projects</h3>
-      <div className="flex flex-wrap gap-2">
+    <div className={`${collapse}`}>
+    <input type="radio" name="resume-input-group" />
+      <div className={inputHeading}>Projects</div>
+      <div className={`${collapseBody}`}>
       {
           data.project.map((proj, index) =>(
-            <div key={index} className="flex flex-wrap gap-2">
-            <input className="input bg-base-300 ml-4" type="text" name="title" value={proj.title} placeholder="Project Title" onChange={(e)=>OnChange_project(index, 'title', e.target.value)} />
-            <input className="input bg-base-300 ml-4" type="text" name="sub" value={proj.sub} placeholder="Project Sub title" onChange={(e)=>OnChange_project(index, 'sub', e.target.value)} />
-            <input className="input bg-base-300 ml-4" type="text" name="disc" value={proj.disc} placeholder="Project discription" onChange={(e)=>OnChange_project(index, 'disc' ,e.target.value)} />
+            <div key={index} className="my-2">
+            <h4 className="text-md">Project {index+1}</h4>
+            <input className={`${inputStyle}`} type="text" name="title" value={proj.title} placeholder="Project Title" onChange={(e)=>OnChange_project(index, 'title', e.target.value)} />
+            <input className={`${inputStyle}`} type="text" name="sub" value={proj.sub} placeholder="Project Sub title" onChange={(e)=>OnChange_project(index, 'sub', e.target.value)} />
+            <input className={`${inputStyle}`} type="text" name="disc" value={proj.disc} placeholder="Project discription" onChange={(e)=>OnChange_project(index, 'disc' ,e.target.value)} />
             </div>
           ))
         }
       </div>
     </div>
 
-      <div className="w-full">
-        <h3 className={inputHeading}>Summary</h3>
-        <textarea className="textarea ml-4 bg-base-300 mx-auto w-[90%]" value={data.summary} onChange={OnChange_summary}/>
-      </div>
       
-      <div>
-        <h3 className={inputHeading}>Skills</h3>
-        <div className="flex flex-wrap gap-2">
+      <div className={`${collapse}`}>
+        <div className={inputHeading}>Skills</div>
+        <input type="radio" name="resume-input-group" />
+        <div className={`${collapseBody}`}>
           {
             data.skill.map((skills ,index) => (
-              <input  key={index} type="text" value={skills} className="input bg-base-300" onChange={(e)=> OnChange_skill(index, e.target.value)}></input>
+              <input  key={index} type="text" value={skills} className={`${inputStyle}`} onChange={(e)=> OnChange_skill(index, e.target.value)}></input>
             ))
           }
         </div>
